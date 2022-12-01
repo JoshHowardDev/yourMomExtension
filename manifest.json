@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+  "name": "YourMom",
+  "version": "1.0",
+  "description": "Prank everybody!",
+  "content_scripts": [
+    {
+      // "matches": ["https://www.youtube.com/*"],
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["./main.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    "assets/never.mp3"
+]
+}
