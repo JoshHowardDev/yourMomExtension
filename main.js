@@ -25,10 +25,10 @@ function replaceText() {
       relativeElements[j].innerText = relativeElements[j].innerText.replaceAll('would', 'wouldn\'t');
      
       const overlyEarnestQuotes = ["Live, laugh, love.", "You have to look through the rain to see the rainbow.", "Dance like nobody is watching.", "Keep calm and carry on.", "You have to kiss a lot of frogs before you find your prince.", "Everything happens for a reason.", "If life gives you lemons, make lemonade.", "You'll find love when you stop looking.", "You miss 100% of the shots you don't take."]
-      const startString = '"'
-      const startStringIndex = relativeElements[j].innerText.indexOf(startString)
-      const endString = '" said'
-      const endStringIndex = relativeElements[j].innerText.indexOf(endString)
+      let startString = '"'
+      let startStringIndex = relativeElements[j].innerText.indexOf(startString)
+      let endString = '" said'
+      let endStringIndex = relativeElements[j].innerText.indexOf(endString)
       //If innerText includes both the start string and the end string
       if (startStringIndex >= 0 && endStringIndex >= 0) {
         //Create string between the start and end string
@@ -38,6 +38,20 @@ function replaceText() {
         
         relativeElements[j].innerText = relativeElements[j].innerText.replace(stringToReplace, quote);
       }
+
+      startString = '"'
+      startStringIndex = relativeElements[j].innerText.indexOf(startString)
+      endString = '" he said'
+      endStringIndex = relativeElements[j].innerText.indexOf(endString)
+      //If innerText includes both the start string and the end string
+      if (startStringIndex >= 0 && endStringIndex >= 0) {
+        //Create string between the start and end string
+        const stringToReplace = relativeElements[j].innerText.slice(startStringIndex, endStringIndex + endString.length)
+        
+        const quote = '"' + overlyEarnestQuotes[Math.floor(Math.random() * (overlyEarnestQuotes.length + 1))] + '" he said'
+        
+        relativeElements[j].innerText = relativeElements[j].innerText.replace(stringToReplace, quote);
+      }      
 
 
     }
@@ -69,7 +83,7 @@ function darkDays() {
 
   document.addEventListener('scroll', (e) => {
     lastKnownScrollPosition = window.scrollY;
-    changeOpacity(((scrollHeight - lastKnownScrollPosition) / scrollHeight) * 1.8);
+    changeOpacity(((scrollHeight - lastKnownScrollPosition) / scrollHeight) * 1.3);
   });
 }
 
